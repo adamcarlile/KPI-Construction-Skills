@@ -1,4 +1,3 @@
-
 [submodule "vendor/plugins/cms-engine"]
 	path = vendor/plugins/cms-engine
 	url = git@github.com:Frozenproduce/workbench.git

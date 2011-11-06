@@ -1,6 +1,6 @@
-SITE_NAME = 'KP Skills Ltd'
+SITE_NAME = 'KPI Construction Skills Ltd'
 ADMIN_EMAIL = 'info@kpskills.co.uk'
-EMAIL_FROM = 'KP Skills Website <web@kpskills.co.uk>'
+EMAIL_FROM = 'KPI Construction Skills Website <web@kpiconstructionskills.co.uk>'
 
 RECAPTCHA_PUBLIC_KEY = '6Lda2LoSAAAAAOH3O9rSTX6BfUBZWgfIC0UaqNlO'
 RECAPTCHA_PRIVATE_KEY = '6Lda2LoSAAAAAGUy0-BZv5Itg7EJxHdTJUTrXjYL'
