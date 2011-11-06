@@ -1,0 +1,62 @@
+@mixin title-case($title-size)
+	color: $title-grey
+	text-shadow: 0px 1px 0px #ffffff
+	font-weight: bold
+	font-size: $title-size
+
+@mixin white-title-case($title-size)
+	color: #ffffff
+	@include red-shadow
+	font-weight: bold
+	font-size: $title-size
+
+@mixin red-shadow
+	text-shadow: 0px -1px 0px #651c0e
+
+@mixin grey-shadow
+	text-shadow: 0px -1px 0px #202020
+	
+@mixin grey-grad
+	background-color: #ebebeb
+	@include background(linear-gradient(#ebebeb, #cccccc))
+	
+@mixin green-grad
+	background-color: #0e3e04
+	@include background(linear-gradient(#165809, #0e3e04))
+	
+@mixin red-grad
+	background-color: $red-grad-top
+	@include background(linear-gradient($red-grad-top, $red-grad-bottom))
+	
+@mixin overlay-drop-shadow
+	@include box-shadow(rgba(0,0,0,0.75), 0px, 0px, 10px)
+	
+@mixin body-case
+	font-size: 12px
+	color: #6a6a6a
+	line-height: 1.4em
+	
+@mixin tab-case
+	@include white-title-case(14px)
+	@include red-grad
+	@include red-shadow
+	text-decoration: none
+	padding: 
+		left: 15px
+		right: 15px
+		top: 10px
+		bottom: 10px
+		
+	
+@mixin breadcrumb-defaults
+	display: block
+	float: left
+	padding:
+		left: 10px
+		right: 10px
+		top: 4px
+		bottom: 3px
+	margin-right: 5px
+	text-decoration: none
+	@include border-radius(8px)
+	line-height: 1em

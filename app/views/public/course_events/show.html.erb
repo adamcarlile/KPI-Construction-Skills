@@ -1,0 +1,14 @@
+<% content_for :pre_content do %>	
+	<%= render :partial => 'public/shared/header_image', :locals => {:title => @event.title} %>
+<% end %>
+
+<% content_for :support_column do %>
+	<%= render :partial => 'public/shared/file_uploads' %>
+	<%= render :partial => 'public/shared/share_this' %>
+<% end %>
+
+
+<div class="cms-content">
+	<%= @event.body %>
+	<%= render_tag_list @page %>
+</div>

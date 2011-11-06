@@ -1,0 +1,9 @@
+<% unless @page.file_uploads.empty? %>
+	<ul id="file-attachments">
+	<% @page.file_uploads.each do |file| %>
+		<li class="<%= file.file_ext %>">
+			<%= link_to("<span>#{file.title} (#{file.file_ext})</span>", file.file.url) %>
+		</li>
+	<% end %>
+	</ul>
+<% end %>

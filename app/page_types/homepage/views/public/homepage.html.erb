@@ -1,0 +1,61 @@
+<% content_for :masthead do %>
+	<div id="promotions">
+		<div class="overlay-support">
+		</div>
+		<div class="inner">
+		<ul>
+	  <%- @banners.each_with_index do |banner, i| %>
+			<li>
+				<%= link_to image_tag(banner.banner.url(:banner)), banner.url %>
+				<div class="promotion-overlay">
+					<h2><%= banner.name %></h2>
+					<p><%= truncate(banner.subtitle, :length => 150) %></p>
+				</div>
+			</li>
+		<%- end %>
+		</ul>
+		</div>
+	</div>
+<% end %>
+
+<nav id="course-index">
+	<ul>
+<% @callouts.each do |page_callout| %>
+		<li class="<%= cycle('one', 'two', 'three', 'four') %>">
+			<a href="<%= page_callout.callout.url %>" style="background-image: url(<%= page_callout.callout.callout.url(:homepage) %>)">
+				<span class="title"><%= page_callout.callout.title %></span>
+			</a>
+		</li>
+<% end %>
+	</ul>
+</nav>
+<section id="course-calendar">
+	<h1>Upcoming Courses</h1>
+	<p>Coming Soon...</p>
+	<div id="calendar">
+		<ul class="calendar-navigation">
+			<li class="last-month"><%= link_to('Last Month', url_for_page(@page, {:month => (@shown_month - 1.month).month, :year => (@shown_month - 1.month).year} ))%></li>
+			<li class="current-month"><%= Date::MONTHNAMES[@shown_month.month] %> <%= @shown_month.year %></li>
+			<li class="next-month"><%= link_to('Next Month', url_for_page(@page, {:month => (@shown_month + 1.month).month, :year => (@shown_month + 1.month).year} ))%></li>
+		</ul>
+		<%= course_calendar({:year => @year, :month => @month, :calendar_title => ''}) do |date| 
+					if @events.select {|x| x.start_date.utc.to_date === date.to_date || x.finish_date === date.to_date }.blank?
+						content_tag(:span, date.day)
+					else
+						link_to(date.day, '#')
+					end
+				end %>
+	</div>
+</section>
+<section id="kpskills-information">
+	<ul>
+		<% @page.panels.each do |panel| %>
+		<li>
+			<h2><%= panel.title %></h2>
+			<div class="cms-content">
+				<%= panel.body %>
+			</div>
+		</li>
+		<% end %>
+	</ul>
+</section>

@@ -1,0 +1,22 @@
+<%= render :partial => 'layouts/shared/header' %>
+<%= render_breadcrumb %>
+	<section id="content" class="content-container">
+		<div class="left-column">
+			<section id="pre-content">
+				<%= yield :pre_content %>
+			</section>
+			<section class="page" id="<%= @page.slug if @page %>">
+				<aside id="support-column">
+					<%= yield :support_column %>
+				</aside>
+				<article id="page-content">
+  				<%= render_flash %>
+  				<%= yield %>
+				</article>
+			</section>
+		</div>
+		<div class="right-column">
+			<%= yield(:aside_column) || render(:partial => 'public/shared/support/page_subnav') %>
+		</div>
+	</section>
+<%= render :partial => 'layouts/shared/footer' %>

@@ -1,0 +1,19 @@
+<div class="subnav">
+	<ul class="featured">
+	<% page.children.published.each do |child| %>
+		<li>
+			<div class="subnav-item-container">
+				<%= content_tag(:h4, link_to(child.title, url_for_page(child)))%>
+				<%= content_tag(:p, truncate(child.intro, :length => 25))%>
+			</div>
+			<ul class="featured-subnav">
+			<% child.children.published.each do |subchild| %>
+				<li>
+					<%= link_to(subchild.title, url_for_page(subchild)) %>
+				</li>
+			<% end %>
+			</ul>
+		</li>
+	<% end %>
+	</ul>
+</div>

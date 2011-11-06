@@ -1,0 +1,42 @@
+<% content_for :pre_content do %>	
+	<%= render :partial => 'public/shared/header_image' %>
+<% end %>
+
+<% content_for :support_column do %>
+	<%= render :partial => 'public/shared/file_uploads' %>
+	<%= render :partial => 'public/shared/share_this' %>
+<% end %>
+
+<% content_for :aside_column do %>
+<!-- TODO: THIS WILL BE REPLACED WITH SUBNAV LATER -->
+<div class="cms-content">
+	<%= Panel.find_by_title('Get in touch').body %>
+</div>
+<% end %>
+
+<% if params[:sent] %>
+  <%= render 'contact_form/views/public/contact_form_sent' %>
+<% else %>
+
+  <%= render 'public/shared/page_body' %>
+
+  <% form_for :enquiry, @enquiry, :url => enquiries_url, :html => {:id => 'enquiry_form'} do |f| %>
+	  <%= hidden_field_tag :slug_path, @page.slug_path %>
+	  <%= f.field :name, :label => 'Name' %>
+	  <%= f.field :email, :label => 'Email' %>
+		<%= f.field :telephone, :label => 'Contact Number' %>
+	  <%= f.field :message, 
+	  	:helper => :text_area, 
+	  	:helper_options => {:rows => 8},
+	  	:label => 'Message'
+	  %>
+		
+		<div class="recaptcha">
+	  	<%= recaptcha_tags %>
+		</div>
+		<p>
+	  	<input type="submit" id="submitbutton" class="submit" value="Send message" />
+		</p>
+	  <% end %>
+
+<% end %>

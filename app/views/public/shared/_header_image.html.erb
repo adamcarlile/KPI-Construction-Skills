@@ -1,0 +1,7 @@
+<% title ||= @page.title %>
+<%= image_tag(@page.images.first.file.url(:course_promo)) unless @page.images.empty? %>
+<div class="overlay-support">
+</div>
+<div class="overlay">
+	<h1><%= title %></h1>
+</div>

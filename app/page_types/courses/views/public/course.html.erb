@@ -1,0 +1,21 @@
+<% content_for :pre_content do %>	
+	<%= render :partial => 'public/shared/header_image' %>
+<% end %>
+
+<% content_for :support_column do %>
+	<%= render :partial => 'public/shared/file_uploads' %>
+	<%= render :partial => 'public/shared/share_this' %>
+<% end %>
+
+<% unless @events.blank? %>
+	<% tabs_for(:id => 'tabs-container') do |tab| %>
+		<% tab.create('course-details', 'Course Details') do %>
+			<%= render :partial => 'public/shared/page_body' %>
+		<% end %>
+		<% tab.create('course-events', "Course Events (#{@events.size})") do %>
+			<%= content_tag(:ul, render(:partial => 'public/course_events/course_event', :collection => @events), :class => 'event-list') %>
+	<% end %>
+<% end %>
+<% else %>
+	<%= render :partial => 'public/shared/page_body' %>
+<% end %>

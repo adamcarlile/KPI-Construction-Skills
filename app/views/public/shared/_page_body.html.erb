@@ -1,0 +1,8 @@
+<div class="cms-content">
+	<% if @page.intro?  %>
+	<div id="intro"><p><%= @page.intro %></p></div>
+	<% end %>
+	<%= @page.body %>
+	
+	<%= render_tag_list @page %>
+</div>

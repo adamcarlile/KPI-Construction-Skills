@@ -1,0 +1,7 @@
+
+[submodule "vendor/plugins/cms-engine"]
+	path = vendor/plugins/cms-engine
+	url = git@github.com:Frozenproduce/workbench.git
+[submodule "vendor/plugins/plugin-banners"]
+	path = vendor/plugins/plugin-banners
+	url = git@github.com:Frozenproduce/workbench-banner.git

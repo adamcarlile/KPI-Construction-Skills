@@ -1,0 +1,19 @@
+<% object = self.send(:object) %>
+<fieldset>
+  <legend>Panel</legend>
+	<div class="title">
+  	<%= f.field :title %>
+	</div>
+	<%= f.field(:body, :helper => :text_area, :helper_options => {:class => 'wysiwyg', :cols => 60, :rows => 20}) %>
+</fieldset>
+<p class="buttons">
+  <% unless request.xhr? %>
+  <%= link_button 'Cancel and go back', collection_path, :icon => 'cross', :class => 'negative' %>
+  <% end %>
+  <% if object.new_record? %>
+  <%= button "Create #{human_model_name}", :icon => 'tick' %>
+  <% else %>
+  <%= button 'Save changes', :icon => 'tick' %>
+	<%= link_button 'Delete Event', admin_page_panel_path(@page.id, object.id), :method => :delete, :icon => 'cross', :class => 'negative' %>
+  <% end %>
+</p>

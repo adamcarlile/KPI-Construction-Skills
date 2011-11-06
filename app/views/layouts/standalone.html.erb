@@ -1,0 +1,7 @@
+<%= render :partial => 'layouts/shared/header' %>
+<%= render_breadcrumb %>
+	<section id="standalone">
+		<%= render_flash %>
+		<%= yield %>
+	</section>
+<%= render :partial => 'layouts/shared/footer' %>

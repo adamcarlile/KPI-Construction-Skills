@@ -1,0 +1,12 @@
+<% parent_type_name = parent_type.to_s.humanize.downcase %>
+
+<p class="buttons" style="overflow:hidden">
+	<%= link_button 'Create new Event', new_admin_page_course_event_path, :icon => 'tick', :class => 'positive', :class => 'ajax_dialog_link', :target => 'new_event_dialog' %>
+</div>
+
+<div id="cal_container">
+	<%= event_calendar %>
+</div>
+
+<div id="edit_event_dialog" class="dialog" title="Edit Event"></div>
+<div id="new_event_dialog" class="dialog" title="New Event"></div>

@@ -1,0 +1,18 @@
+<% content_for :pre_content do %>	
+	<%= render :partial => 'public/shared/header_image' %>
+<% end %>
+
+<% content_for :support_column do %>
+	<%= render :partial => 'public/shared/file_uploads' %>
+	<%= render :partial => 'public/shared/share_this' %>
+<% end %>
+
+
+<div class="cms-content">
+	<% if @page.intro?  %>
+	<div id="intro"><p><%= @page.intro %></p></div>
+	<% end %>
+	<%= @page.body %>
+	<%= render_tag_list @page %>
+</div>
+<%= render :partial => 'public/shared/course_list' %>

@@ -1,0 +1,121 @@
+div.panel
+  border: 1px solid #EEEEEE
+  background-color: #FAFAFA
+  border-radius: 10px
+  -webkit-border-radius: 10px
+  -moz-border-radius: 10px
+  padding: 20px
+  margin-top: 5px
+  margin-bottom: 5px
+  h3
+    margin: 0px
+    padding: 0px
+    margin-bottom: 10px
+
+ul
+  &.control
+    list-style: none
+    margin: 0px
+    padding: 0px
+    float: right
+    border-left: 1px solid #EEEEEE
+    margin-left: 20px
+    margin-bottom: 20px
+    li
+      border-left: 1px solid #ffffff
+      padding-left: 10px
+      padding-top: 5px
+      padding-bottom: 5px
+  &.callouts
+    margin: 0px
+    padding: 0px
+    > li
+      margin: 0px
+      padding: 0px
+      padding: 10px
+      background-color: #efefef
+      margin-top: 5px
+      margin-bottom: 5px
+      border: 1px solid #cccccc
+      list-style: none
+      float: left
+      -moz-border-radius: 10px
+      -webkit-border-radius: 10px
+      position: relative
+      cursor: move
+      margin-right: 10px
+
+div.inactive ul.callouts > li
+  cursor: default
+
+ul.callouts
+  div
+    &.container
+      position: relative
+      height: 85px
+    &.overlay
+      position: absolute
+      bottom: 10px
+      left: 0px
+      padding: 5px
+      font-size: 10px
+      background-color: #000000
+      color: #ffffff
+      p
+        margin: 0px
+        padding: 0px
+  > li
+    > ul
+      display: none
+      position: absolute
+      border: 1px solid #cccccc
+      background-color: #efefef
+      border-left: 0px
+      width: 60px
+      -moz-border-radius-topright: 5px
+      -moz-border-radius-bottomright: 5px
+      right: -71px
+      top: 17px
+      padding: 5px
+      margin: 0px
+    &:hover > ul
+      display: block
+      z-index: 9000
+    > ul > li
+      padding: 0px
+      margin: 0px
+      list-style: none
+      font-size: 12px
+  li form
+    padding: 0px
+    margin: 0px
+    padding-top: 4px
+    label
+      font-weight: normal !important
+      padding-left: 2px
+
+div
+  &.active, &.inactive
+    padding: 10px
+    width: 46%
+    float: left
+    padding-bottom: 10px
+    border: 1px solid #cccccc
+  &.active > h4, &.inactive > h4
+    margin-top: -10px
+    margin-left: -10px
+    margin-right: -10px
+    padding: 10px
+    margin-bottom: 10px
+    text-shadow: 1px 1px 0px #fff
+    background-color: #cccccc
+
+form.ajax input.submit
+  display: none
+
+div.inactive
+  margin-left: 20px
+  > ul > li
+    opacity: 0.5
+  ul li:hover
+    opacity: 1.0

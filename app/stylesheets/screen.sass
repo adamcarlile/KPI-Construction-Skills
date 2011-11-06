@@ -1,0 +1,823 @@
+@import "compass/reset"
+@import "compass/css3"
+@import "compass/css3/pie"
+@import "compass/utilities/general/clearfix"
+@import "utils/variables"
+@import "utils/mixins"
+@import "utils/banners"
+
+a
+	color: #b33318
+	
+	&:hover
+		color: #d93d1e
+
+body
+	font-family: $typeface
+	font-size: $font-size
+	background-color: $light-grey
+	
+div#wrapper
+	width: 960px
+	margin: auto
+	
+header#masthead
+	display: block
+	position: relative
+	margin-top: 80px
+	border: 1px solid #cccccc
+	padding: 10px
+	padding-bottom: 0px
+	background-color: #ffffff
+	margin-bottom: 10px
+	
+	a#logo
+		display: block
+		width: 160px
+		height: 125px
+		background-color: #ffffff
+		padding: 10px
+		border:
+			left: 1px solid #cccccc
+			top: 1px solid #cccccc
+			right: 1px solid #cccccc
+		position: absolute
+		text-indent: -10000px
+		top: -65px
+		left: -1px
+		z-index: 1
+		background:
+			image: image_url("icons/kp-skills-logo.jpg")
+			position: 10px 10px
+			repeat: no-repeat
+		
+	nav#main-navigation
+		background-color: #ffffff
+		margin-left: 169px
+		position: relative
+		display: block
+		z-index: 100
+		margin-top: -10px
+		
+		> ul
+			@include pie-clearfix
+			padding:
+				top: 10px
+				bottom: 10px
+		
+			li.selected-with-subnav
+				a.subnav-link
+					background-image: none
+					background-color: #d93d1e !important
+		
+			> li
+				float: left
+				z-index: 100
+				border:
+					top: 1px solid #cccccc
+					bottom: 1px solid #cccccc
+					left: 1px solid #cccccc
+					right: 1px solid #f2f2f2
+				
+				div.subnav
+					display: none
+				
+				&:hover
+				
+					div.subnav
+						display: block
+						width: auto
+						position: absolute
+						margin-left: -100px
+						padding: 10px
+						padding-bottom: 5px
+						z-index: 1000
+						@include red-grad
+						@include box-shadow(rgba(0,0,0,0.30), 0px, 10px, 10px)
+						@include border-radius(0px 0px 10px 10px)
+						@include pie-clearfix
+						
+						ul.featured	
+							padding-right: 10px
+							border-right: 1px solid #8d2f1c
+							
+							li
+								margin-bottom: 5px
+								margin-top: 5px
+								padding-right: 10px
+								padding-left: 10px
+								border-right: 1px solid #eb593c
+								border-left: 1px solid #8d2f1c
+								@include pie-clearfix
+								float: left
+								width: 150px
+								height: 170px
+								
+								ul.featured-subnav
+									li
+										height: auto
+										border: none
+										padding: 0px
+										margin: 0px
+										padding:
+											top: 3px
+											bottom: 3px
+										
+										a
+											color: #efefef
+											font-size: 11px
+											line-height: 1.4em
+											text-decoration: none
+											display: block
+											font-weight: bold
+											
+											&:hover
+												color: #ffffff
+							
+								&:first-child
+									border-left: 0px
+								
+								&:last-child
+									border-right: 0px
+								
+								h4
+									font:
+										size: 14px
+										weight: bold
+									margin-top: 3px
+									
+									a
+										color: #ffffff
+										text-decoration: none
+										@include red-shadow
+								
+								img
+									float: left
+									border: 3px solid #eb593c
+									margin-right: 5px
+								
+								p
+									color: #ffffff
+									margin-top: 5px
+							
+					
+				&.last
+					border-right: 1px solid #cccccc
+					
+					a
+						width: 141px
+								
+				> a, a.subnav-link
+					display: block
+					width: 142px
+					padding:
+						left: 10px
+						top: 10px
+						bottom: 10px
+					text-decoration: none
+					@include grey-grad
+					
+					span.title
+						display: block
+						@include title-case(18px)
+						
+					span.subtitle
+						padding-top: 5px
+						display: block
+						font-size: 10px
+						color: #888889
+						padding-right: 10px
+						line-height: 1.2em
+				
+				> a
+					&:hover
+						@include red-grad	
+
+				> a, a.subnav-link
+					
+					&:hover
+						span
+							color: #ffffff !important
+
+							&.title
+								@include red-shadow
+				
+				a.subnav-link
+					&:hover
+						background-image: none
+						background-color: #d93d1e
+
+header#masthead nav#main-navigation > ul > li.selected-with-subnav
+	a.subnav-link
+		span
+			color: #ffffff !important
+		
+			&.title
+				text-shadow: 0px -1px 0px #651c0e !important
+					
+// Banner Styling					
+
+div.overlay-support
+	background:
+		image: image_url("support/left-wrapper-big.png")
+		positon: left top
+		repeat: no-repeat
+	position: absolute
+	bottom: 20px
+	left: -4px
+	width: 5px
+	height: 84px
+	z-index: 1000
+
+div.promotion-overlay
+	position: absolute
+	bottom: 30px
+	left: 0px
+	float: left
+	@include red-grad
+	padding: 10px
+	@include box-shadow(rgba(0,0,0,0.75), 0px, 0px, 10px)
+	height: 76px - 20px
+		
+	h2
+		display: block
+		font-size: 24px
+		color: #ffffff
+		font-weight: bold
+		@include red-shadow
+		padding-bottom: 3px
+		
+	p
+		max-width: 500px
+		color: #ffffff
+		line-height: 1.3em
+		font-size: 12px
+		
+section#content
+	display: block
+	padding-left: 10px
+	padding-right: 10px
+		
+nav#course-index
+	width: 700px
+	float: left
+	@include pie-clearfix
+	
+	ul
+		@include pie-clearfix
+	
+		li
+			float: left
+			margin-right: 20px
+			margin-bottom: 20px
+			
+			&.four
+				margin-right: 0px
+					
+			a
+				display: block
+				height: 125px
+				width: 160px
+				position: relative
+				@include box-shadow(rgba(0,0,0,0.50), 0px, 0px, 10px)
+				@include border-radius(10px)
+				overflow: hidden
+				
+				span.title
+					position: absolute
+					display: block
+					bottom: 0px
+					@include red-grad
+					width: 160px - 20px
+					padding: 10px
+					color: #ffffff
+					@include red-shadow
+					font-weight: bold
+					font-size: 14px
+					letter-spacing: -1px
+					border-top: 1px solid #eb593c
+				
+section#course-calendar
+	float: left
+	width: 220px
+	margin-left: 20px
+	
+	h1
+		@include title-case(23px)
+		margin-bottom: 10px
+		
+	p
+		color: $title-grey
+		font-size: 12px
+		
+	table.calendar
+		
+		thead
+			border-left: 1px solid $border-color
+			abbr
+				width: 30px
+				display: block
+				@include white-title-case(11px)
+				@include red-grad
+				text-align: center
+				padding-top: 5px
+				padding-bottom: 2px
+				border:
+					right: 1px solid $border-color
+					top: 1px solid $border-color
+		
+		tbody
+			border:
+				top: 1px solid $border-color
+				left: 1px solid $border-color
+				
+			span, a
+				width: 30px
+				display: block
+				padding:
+					top: 10px
+					bottom: 5px
+				text-align: center
+				border:
+					right: 1px solid $border-color
+					bottom: 1px solid $border-color
+			
+			span
+				@include title-case(16px)
+				@include grey-grad
+			
+			a
+				@include white-title-case(16px)
+				@include red-grad
+				text-decoration: none
+			
+			td.otherMonth
+				span
+					background: #ffffff !important
+					color: #cccccc
+					text-shadow: none
+
+ul.calendar-navigation
+	margin-top: 5px
+	@include pie-clearfix
+	
+	li
+		float: left
+		width: 10%
+		
+		&.last-month
+			a
+				text-indent: -10000px
+				background-image: image_url("icons/calendar-prev.png")
+		
+		&.next-month
+			a
+				text-indent: -10000px
+				background-image: image_url("icons/calendar-next.png")
+		
+		&.current-month
+			width: 80%
+			@include title-case(18px)
+			text-align: center
+			line-height: 40px
+		
+		a
+			height: 40px
+			display: block
+			text-align: center
+			overflow: hidden
+			background:
+				position: center
+				repeat: no-repeat
+	
+
+section#kpskills-information
+	padding-top: 10px
+	clear: both
+
+	> ul
+		@include pie-clearfix
+		
+		> li
+			float: left
+			width: 220px
+			margin-left: 20px
+			
+			&:first-child
+				margin-left: 0px
+			
+			h2
+				@include title-case(20px)
+				letter-spacing: -1px
+				padding-bottom: 10px
+
+form
+	div.recaptcha
+		@include pie-clearfix
+		padding:
+			top: 5px
+			bottom: 5px
+		margin-left: 150px
+			
+	p
+		@include pie-clearfix
+		padding:
+			top: 5px
+			bottom: 5px
+		
+		&.withError
+			label
+				color: $red-grad-bottom
+			
+			input
+				border-color: $red-grad-bottom
+				color: $red-grad-bottom
+				
+			span
+				display: block
+				margin-left: 150px
+				float: left
+				text-transform: capitalize
+				padding-top: 5px
+				color: $red-grad-bottom
+		
+		
+		br
+			display: none
+			
+		input
+			width: 300px
+			float: left
+			padding: 8px
+			font:
+				size: 12px
+				family: sans-serif
+			border: 1px solid #cccccc
+			@include box-shadow(#9a9a9a, 0px, 1px, 1px, 0px, inset)
+		
+		input.submit
+			@include border-radius(10px)
+			@include white-title-case(16px)
+			padding: 10px
+			text-align: center
+			@include red-grad
+			width: auto
+			margin-left: 150px
+			cursor: pointer
+		
+		textarea
+			width: 300px
+			float: left
+			padding: 8px
+			font:
+				size: 12px
+				family: sans-serif
+			border: 1px solid #cccccc
+			@include box-shadow(#9a9a9a, 0px, 1px, 1px, 0px, inset)
+		
+		label
+			width: 150px
+			float: left
+			@include title-case(12px)
+			padding:
+				top: 10px
+	
+div.cms-content
+	h3
+		@include title-case(16px)
+		letter-spacing: -1px
+		padding-bottom: 10px
+		padding-top: 5px
+		
+		span
+			letter-spacing: 0px
+			display: block
+			font-size: 10px
+	
+	strong
+		font-weight: bold
+	
+	p
+		@include body-case
+		padding-bottom: 15px
+	
+	ul
+		li
+			background:
+				image: image_url("icons/bullet.png")
+				position: 0px 2px
+				repeat: no-repeat
+			padding:
+				top: 3px
+				bottom: 3px
+				left: 20px
+			@include body-case
+			
+section.content-container
+	@include pie-clearfix
+	margin:
+		left: -10px
+		right: -10px
+		bottom: 20px
+	
+section#pre-content
+	background-color: #ffffff
+	width: 710px - 20px
+	padding: 10px
+	border:
+		top: 1px solid #cccccc
+		left: 1px solid #cccccc
+		right: 1px solid #cccccc
+	position: relative
+	
+	div.overlay-support
+		height: 49px
+		bottom: 36px
+		left: 6px
+		width: 5px
+		z-index: 1000
+		background-image: image_url("support/left-wrapper-small.png")
+	
+	div.overlay
+		position: absolute
+		bottom: 30px
+		left: 10px
+		overflow: hidden
+		padding:
+			top: 10px
+			bottom: 10px
+			right: 10px
+
+		h1
+			@include red-grad
+			padding: 10px
+			@include box-shadow(rgba(0,0,0,0.75), 0px, 0px, 10px)
+			height: 44px - 20px
+			display: block
+			font-size: 24px
+			color: #ffffff
+			font-weight: bold
+			@include red-shadow
+			
+					
+article#page-content
+	background-color: #ffffff
+	float: left
+	width: 590px - 20px
+	padding: 10px
+	padding-top: 0px
+	border: 1px solid #cccccc
+	border-top: 0px
+
+aside#support-column
+	float: left
+	width: 120px - 20px
+	padding: 10px
+	padding-top: 0px
+	margin-right: -1px
+	background-color: #ffffff
+	border: 1px solid #cccccc
+	border-right: 0px
+	position: relative
+	z-index: 100
+	border-top: 0px
+
+section.homepage
+	padding-top: 10px
+		
+nav#breadcrumb
+	@include pie-clearfix
+	margin-bottom: 10px
+	
+	a
+		background-color: #dedede
+		color: #626262
+		@include breadcrumb-defaults
+		@include box-shadow(#000000, 1px, 1px, 1px, 0px, inset)
+  
+		&:hover
+			background-color: #b3b3b3
+  
+	span
+		@include red-grad
+		@include breadcrumb-defaults
+		color: #ffffff
+		
+div.left-column
+	float: left
+	width: 712px
+	
+div.right-column
+	float: right
+	width: 220px
+	margin-right: 10px
+
+nav#subnav
+	padding-top: 5px
+	
+	h3
+		@include title-case(22px)
+		padding-bottom: 10px
+	
+	ul
+		border:
+			left: 1px solid $border-color
+			right: 1px solid $border-color
+			top: 1px solid $border-color
+			
+		li
+			border-bottom: 1px solid $border-color
+			
+			&.current
+				a
+					@include red-grad
+					@include white-title-case(14px)
+			
+			&.withsubnav
+				border-bottom: none
+			
+			a
+				display: block
+				padding:
+					top: 10px
+					bottom: 5px
+					left: 10px
+				@include title-case(14px)
+				@include grey-grad
+				text-decoration: none
+			
+				&:hover
+					@include red-grad
+					@include white-title-case(14px)
+			
+			ul.open-subnav
+				border: none
+				border-top: 1px solid $border-color
+				
+				li
+					
+					&.current
+						a
+							background-color: #2e2e2e
+					
+					a
+						background-image: none
+						background-color: $title-grey
+						@include white-title-case(12px)
+						@include grey-shadow
+					
+						&:hover
+							background-color: #2e2e2e
+						
+ul#course-list
+	@include pie-clearfix
+	
+	li
+		padding-right: 10px
+		border-right: 1px solid $border-color
+		float: left
+		width: 270px
+		padding-bottom: 10px
+		padding-top: 10px
+		border-bottom: 1px solid $border-color
+		@include pie-clearfix
+		
+		a
+			img
+				float: left
+				margin-right: 10px
+				border: 1px solid $border-color
+		
+			&:hover
+				img
+					border: 1px solid #d93d1e
+		
+		
+		h2
+			margin-top: 5px
+			margin-bottom: 5px
+			a	
+				@include title-case(14px)
+				color: #b33318
+				text-decoration: none
+				
+				&:hover
+					color: #d93d1e
+		
+		p
+			color: #6A6A6A
+			line-height: 1.4em
+			font-size: 10px
+			
+			a
+				color: #b33318
+				
+				&:hover
+					color: #d93d1e
+				
+		
+		&.last
+			margin-right: 0px
+			padding-right: 0px
+			border-right: none
+			padding-left: 10px
+			
+ul#file-attachments
+	margin-bottom: 10px
+	
+	li
+		margin-top: 10px
+		
+		&:first-child
+			margin-top: 0px
+			
+		a
+			display: block
+			background:
+				image: image_url("mimetypes/unknown.png")
+				repeat: no-repeat
+				position: top center
+			width: 100px
+			text-decoration: none
+			
+			span
+				display: block
+				padding-top: 90px
+				color: #6A6A6A
+				font-style: italic
+				font-size: 12px
+				line-height: 1.4em
+		
+		&.pdf
+			a
+				background-image: image_url("mimetypes/pdf.png")
+		
+		&.ppt
+			a
+				background-image: image_url("mimetypes/ppt.png")
+		
+		&.xls, &.csv
+			a
+				background-image: image_url("mimetypes/xls.png")
+			
+ul#share-this
+	li
+		padding-top: 5px
+		padding-bottom: 5px
+		@include pie-clearfix
+					
+div.flash
+	padding:
+		top: 10px
+		bottom: 10px
+		left: 20px
+		right: 20px
+	margin-bottom: 10px
+	@include border-radius(10px)
+
+	&#error
+		@include red-grad
+		@include white-title-case(14px)
+	
+	&#notice
+		+green-grad
+		+white-title-case(14px)
+		
+ul.tabs
+	@include pie-clearfix
+	margin-bottom: 15px
+	
+	li
+		float: left
+		a
+			display: block
+			background-color: #dedede
+			color: #626262
+			+breadcrumb-defaults
+			font-size: 14px
+			padding:
+				left: 10px
+				right: 10px
+				top: 5px
+				bottom: 5px
+			+box-shadow(#000000, 1px, 1px, 1px, 0px, inset)
+			
+			&:hover
+				background-color: #b3b3b3
+			
+			&.active
+				color: #ffffff
+				@include red-grad
+				+box-shadow(none)
+
+section#standalone
+	display: block
+	margin: auto
+	width: 470px
+	padding: 20px
+	margin-top: 20px
+	margin-bottom: 20px
+	background-color: #ffffff
+	border: 1px solid #cccccc
+
+					

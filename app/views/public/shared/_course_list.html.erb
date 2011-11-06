@@ -1,0 +1,9 @@
+<ul id="course-list">
+	<% @page.children.each do |course| %>
+		<li<%= cycle('', ' class="last"') %>>
+			<%= link_to(image_tag(course.images.first.file.url(:thumb), :width => 70, :height => 70), url_for_page(course)) unless course.images.empty? %>
+			<h2><%= link_to(course.title, url_for_page(course)) %></h2>
+			<%= content_tag(:p, truncate(course.intro, :length => 90) + link_to('Find out more', url_for_page(course))) if course.intro %></p>
+		</li>
+	<% end %>
+</ul>

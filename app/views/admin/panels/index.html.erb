@@ -1,0 +1,32 @@
+<% parent_type_name = parent_type.to_s.humanize.downcase %>
+
+<p class="buttons" style="overflow:hidden">
+	<%= link_button 'Create new Panel', new_admin_page_panel_path, :icon => 'tick', :class => 'positive', :class => 'ajax_dialog_link', :target => 'new_panel_dialog' %>
+</div>
+
+<% if collection.empty?  %>
+  <p>No extra accordion panels currently defined for <%= parent_type_name %></p>
+<% else %>
+
+<div id="panel_container">
+<%- collection.each do |panel| %>
+<div class="panel handle" id="panel_<%= panel.id -%>">
+	<ul class="control">
+		<li>
+			<%= link_to_with_icon 'edit', 'Edit', edit_object_url(panel), :class => "ajax_dialog_link", :target => 'edit_panel_dialog' %>
+		</li>
+		<li>
+      <%= link_to "#{icon('delete')} Delete", object_path(panel), :method => :delete, :confirm => 'Are you sure?' %> &nbsp;
+		</li>
+	</ul>
+	<h3><%= h panel.title %></h3>
+	<div class="content">
+		<%= panel.body %>
+	</div>
+</div>
+<% end %>
+</div>
+<% end %>
+
+<div id="edit_panel_dialog" class="dialog" title="Edit Panel"></div>
+<div id="new_panel_dialog" class="dialog" title="New Panel"></div>

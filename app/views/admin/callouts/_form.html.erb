@@ -1,0 +1,79 @@
+<style>
+div.left
+{
+	float:left;
+	width:46%;
+}
+
+div.right
+{
+	float:left;
+	width:46%;
+}
+
+div.icons ul li
+{
+	margin:0px;
+	padding:0px;
+	padding:10px;
+	background-color:#efefef;
+	margin-top:5px;
+	margin-bottom:5px;
+	border:1px solid #cccccc;
+	list-style:none;
+	float:left;
+	clear:both;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	position:relative;
+	margin-right:10px;
+}
+
+div.code 
+{
+	float:left;
+	width:46%;
+	margin-right:20px;
+}
+
+div.code textarea
+{
+	font-family: courier; 
+	padding:10px;
+	color:#fff;
+	background-color:#000;
+	width:95%;
+}
+
+div.code.fullwidth
+{
+	width:96%;
+}
+</style>
+<fieldset id="callouts">
+	<div class="title">
+	<%= f.field :title, :label => 'Title' %>
+	</div>
+	<div class="left">
+		<%= f.field :subtitle %>
+		<%= f.field :url %>
+		<p>
+			<%= f.label :callout %><br />
+			<%= f.file_field :callout %>
+		</p>
+	</div>
+	<div class="right icons">
+			<ul>
+				<li>
+					<%= image_tag @object.callout.url(:icon) %>
+				</li>
+				<li>
+					<%= image_tag @object.callout.url(:standard) %>
+				</li>
+				<li>
+					<%= image_tag @object.callout.url(:homepage) %>
+				</li>
+			</ul>
+	</div>
+</fieldset>
+<%= render 'admin/generic/resource_buttons' %>

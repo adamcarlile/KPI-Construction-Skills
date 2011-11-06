@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title><%= @page_title %> - <%= SITE_NAME %></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= tag 'meta', :content => @meta_keywords, :name => 'keywords' unless @meta_keywords.blank? %>
+<%= tag 'meta', :content => @meta_description, :name => 'description' unless @meta_description.blank? %>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<%= stylesheet_link_tag 'screen', :media => 'screen,projection', :cache => 'base' %>
+<!--[if lte IE 8]>
+<%= javascript_include_tag '/cms/javascripts/html5.js' %>
+<![endif]-->
+<!--[if IE 6]>
+<%= stylesheet_link_tag 'ie6', :media => 'screen,projection' %>
+<![endif]-->
+<!--[if IE 7]>
+<%= stylesheet_link_tag 'ie7', :media => 'screen,projection' %>
+<![endif]-->
+<!--[if IE 8]>
+<%= stylesheet_link_tag 'ie8', :media => 'screen,projection' %>
+<![endif]-->
+<%= stylesheet_link_tag 'print', :media => 'print' %>
+<%= yield :head %>
+</head>
+<body>
+<div id="wrapper">
+	<header id="masthead">
+		<a href="/" id="logo">KP Skills Homepage</a>
+		<%= render_global_nav %>
+		<%= yield :masthead %>
+	</header>

@@ -1,0 +1,4 @@
+<% parent_type_name = parent_type.to_s.humanize.downcase %>
+<% create_form do |f| %>
+	<%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>

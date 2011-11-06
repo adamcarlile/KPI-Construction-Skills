@@ -1,0 +1,7 @@
+<%= tab :dashboards, :label => 'Dashboard', :url => admin_dashboard_path %>
+<%= tab :pages, :attachments %>
+<%= tab :banners %>
+<%= tab :callouts %>
+<%= tab :images if current_user.can_manage_images? %>
+<%= tab :file_uploads, :label => "Files" if current_user.can_manage_files? %>
+<%= tab :users if current_user.can_manage_users? %>

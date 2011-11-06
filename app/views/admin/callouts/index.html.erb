@@ -1,0 +1,201 @@
+<% content_for :head do %>
+<style>
+ul.callouts
+{
+	margin:0px;
+	padding:0px;
+}
+
+ul.callouts > li
+{
+	margin:0px;
+	padding:0px;
+	padding:10px;
+	background-color:#efefef;
+	margin-top:5px;
+	margin-bottom:5px;
+	border:1px solid #cccccc;
+	list-style:none;
+	float:left;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	position:relative;
+	cursor:move;
+	margin-right:10px;
+}
+
+div.inactive ul.callouts > li
+{
+	cursor:default;
+}
+
+ul.callouts div.container
+{
+	position:relative;
+	height:85px;
+}
+
+ul.callouts div.overlay
+{
+	position:absolute;
+	bottom:10px;
+	left:0px;
+	padding:5px;
+	font-size:10px;
+	background-color:#000000;
+	color:#ffffff;
+}
+
+ul.callouts div.overlay p
+{
+	margin:0px;
+	padding:0px;
+}
+
+ul.callouts > li > ul 
+{
+	display:none;
+	position:absolute;
+	border:1px solid #cccccc;
+	background-color:#efefef;
+	border-left:0px;
+	width:60px;
+	-moz-border-radius-topright:5px;
+	-moz-border-radius-bottomright:5px;
+	right:-71px;
+	top:17px;
+	padding:5px;
+	margin:0px;
+}
+
+ul.callouts > li:hover > ul
+{
+	display:block;
+	z-index:9000;
+}
+
+ul.callouts > li > ul > li
+{
+	padding:0px;
+	margin:0px;
+	list-style:none;
+	font-size:12px;
+}
+
+ul.callouts li form
+{
+	padding:0px;
+	margin:0px;
+	padding-top:4px;
+}
+
+ul.callouts li form label
+{
+	font-weight:normal !important;
+	padding-left:2px;
+}
+
+div.active, div.inactive
+{
+	padding:10px;
+	width:46%;
+	float:left;
+	padding-bottom:10px;
+	border:1px solid #cccccc;
+}
+
+div.active > h4, div.inactive > h4
+{
+	margin-top:-10px;
+	margin-left:-10px;
+	margin-right:-10px;
+	padding:10px;
+	margin-bottom:10px;
+	text-shadow: 1px 1px 0px #fff;
+	background-color:#cccccc;
+}
+
+div.inactive
+{
+	margin-left:20px;
+}
+
+div.inactive > ul > li
+{
+	opacity: 0.5;
+}
+
+div.inactive ul li:hover
+{
+	opacity: 1.0;
+}
+
+</style>
+<script type="text/javascript">
+//public/javascripts/application.js
+
+// This sets up the proper header for rails to understand the request type,
+// and therefore properly respond to js requests (via respond_to block, for example)
+$.ajaxSetup({ 
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})
+
+	$(document).ready(function() {
+
+  // UJS authenticity token fix: add the authenticy_token parameter
+  // expected by any Rails POST request.
+  	$(document).ajaxSend(function(event, request, settings) {
+    // do nothing if this is a GET request. Rails doesn't need
+    // the authenticity token, and IE converts the request method
+    // to POST, just because - with love from redmond.
+    if (settings.type == 'GET') return;
+    if (typeof(AUTH_TOKEN) == "undefined") return;
+    settings.data = settings.data || "";
+    settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+  });
+
+	});
+  $(document).ready(function() {
+		$('div.active ul.callouts').sortable({
+		  dropOnEmpty:false, 
+		  cursor: 'move',
+		  opacity: 0.8,
+		  scroll: true,
+		  update: function(){
+		    $.ajax({
+		        type: 'post', 
+		        data: $('div.active ul.callouts').sortable('serialize'), 
+		        dataType: 'script', 
+		        url: '<%= sort_admin_callouts_path %>'
+					})
+		    }
+		  })
+		
+		$('ul.callouts li ul li form').each(function(){
+			var form = $(this)
+			var checkbox = $(this).children('#callout_visible')
+			checkbox.change(function(){
+				form.submit();
+			})
+		})
+		
+	})
+</script>
+<% end %>
+
+<% @page_title = human_model_name.humanize.pluralize %>
+
+<%= render :partial => 'admin/shared/collection_option_links' %>
+
+<div class="active">
+	<h4>Active Callouts</h4>
+	<ul class="callouts">
+		<%= render :partial => 'callout', :collection => @visible %>
+	</ul>
+</div>
+<div class="inactive">
+	<h4>Inactive Callouts</h4>
+	<ul class="callouts">
+		<%= render :partial => 'callout', :collection => @invisible %>
+	</ul>
+</div>

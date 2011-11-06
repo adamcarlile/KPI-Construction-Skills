@@ -1,0 +1,24 @@
+<li>
+	<div class="container">
+		<div class="overlay">
+			<h4><%= callout.title %></h4>
+			<%= content_tag('p', callout.subtitle) if callout.subtitle %>
+			<small><%= callout.url %></small>
+		</div>
+		<%= image_tag callout.callout.url(:standard) %>
+	</div> 
+	<ul>
+		<li>
+			<%= link_to_with_icon 'edit', 'Edit', edit_object_url(callout) %>
+		</li>
+		<li>
+      <%= link_to "#{icon('delete')} Delete", object_path(callout), :method => :delete, :confirm => 'Are you sure?' %>
+		</li>
+		<li>
+			<% form_for object, :url => object_url(callout), :html => {:method => :put} do |f| %>
+				<%= f.check_box :visible %>
+				<%= f.label :visible, 'Active'%>
+			<% end %>
+		</li>
+	</ul>
+</li>
